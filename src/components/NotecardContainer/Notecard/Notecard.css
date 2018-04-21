@@ -1,0 +1,8 @@
+.Notecard {
+  background-color: #fff;
+  width: 90%;
+  min-height: 450px;
+  margin: 1.0rem auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 5px #ccc;
+}
