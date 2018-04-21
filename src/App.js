@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import NotecardContainer from './components/NotecardContainer/NotecardContainer';
 import Layout from './components/Layout/Layout';
-import Notecards from './containers/Notecards/Notecards';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
-          <Route path="/" exact component={Notecards} />
+          <Route path="/" exact component={NotecardContainer} />
         </Switch>
       </Layout>
     );
