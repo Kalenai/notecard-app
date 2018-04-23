@@ -1,4 +1,9 @@
 .NotecardField {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.NotecardField span {
   display: block;
   padding: 0.75rem;
   min-height: 1.5rem;
@@ -10,8 +15,12 @@
   box-shadow: 0 1px 3px #ccc;
 }
 
+.NotecardField:nth-of-type(2) {
+  min-height: 300px;
+}
+
 [contenteditable='true']:empty:before {
-  color: #555;
+  color: #999;
   content: attr(placeholder);
   display: block;
 }

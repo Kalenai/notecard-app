@@ -6,14 +6,15 @@ const NotecardField = (props) => {
   const { placeholder, content } = props;
 
   return (
-    <ContentEditable
-      content={content}
-      className={classes.NotecardField}
-      tagName='span'
-      multiLine={true}
-      onChange={props.handleChange}
-      placeholder={placeholder}
-    />
+    <div className={classes.NotecardField}>
+      <ContentEditable
+        content={content}
+        tagName='span'
+        multiLine={true}
+        onChange={props.handleChange}
+        placeholder={placeholder}
+      />
+    </div>
   );
 };
 

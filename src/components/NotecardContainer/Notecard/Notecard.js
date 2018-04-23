@@ -1,11 +1,16 @@
 import React from 'react';
 import classes from './Notecard.css';
 
-const Notecard = (props) => {
-  const {title, content, onTitleChange, onContentChange} = props;
+const Notecard = props => {
+  const { title, content, onTitleChange, onContentChange, notecardSizeSmall } = props;
+
+  const appliedClasses = [classes.Notecard];
+  if (notecardSizeSmall) {
+    appliedClasses.push(classes.NotecardSmall);
+  }
 
   return (
-    <div className={classes.Notecard}>
+    <div className={appliedClasses.join(' ')}>
       {props.children(title, content, onTitleChange, onContentChange)}
     </div>
   );
