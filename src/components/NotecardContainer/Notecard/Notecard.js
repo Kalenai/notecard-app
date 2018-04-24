@@ -2,16 +2,13 @@ import React from 'react';
 import classes from './Notecard.css';
 
 const Notecard = props => {
-  const { title, content, onTitleChange, onContentChange, notecardSizeSmall } = props;
+  const { title, content, onTitleChange, onContentChange, notecardExpanded } = props;
 
-  const appliedClasses = [classes.Notecard];
-  if (notecardSizeSmall) {
-    appliedClasses.push(classes.NotecardSmall);
-  }
+  const expandedStyle = notecardExpanded ? classes.NotecardExpanded : '';
 
   return (
-    <div className={appliedClasses.join(' ')}>
-      {props.children(title, content, onTitleChange, onContentChange)}
+    <div className={`${classes.Notecard} ${expandedStyle}`}>
+      {props.children(title, content, onTitleChange, onContentChange, notecardExpanded)}
     </div>
   );
 };

@@ -2,13 +2,16 @@
   background-color: #fff;
   position: relative;
   width: 90%;
-  margin: 1.0rem auto;
+  max-height: 30vh;
+  margin: 1.0rem;
   border: 1px solid #eee;
   box-shadow: 0 2px 5px #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
-.NotecardSmall {
-  margin: 1.0rem;
-  max-height: 100px;
-  max-width: 10%;
+.NotecardExpanded {
+  margin: 1.0rem auto;
+  width: 90%;
+  max-height: 80vh;
 }

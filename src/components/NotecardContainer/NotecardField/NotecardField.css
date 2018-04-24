@@ -1,25 +1,29 @@
 .NotecardField {
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.NotecardField span {
-  display: block;
   padding: 0.75rem;
-  min-height: 1.5rem;
-  overflow-wrap: break-word;
+  min-height: 2.0rem;
+  overflow: hidden;
 }
 
-.NotecardField:first-of-type {
+.NotecardFieldInner {
+  display: block;
+}
+
+.NotecardTitle .NotecardFieldInner {
   font-weight: bold;
-  box-shadow: 0 1px 3px #ccc;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.NotecardField:nth-of-type(2) {
-  min-height: 300px;
+.NotecardExpanded {
+  overflow: auto;
 }
 
-[contenteditable='true']:empty:before {
+.NotecardExpanded .NotecardFieldInner {
+  white-space: pre-wrap;
+}
+
+.NotecardExpanded [contenteditable='true']:empty:before {
   color: #999;
   content: attr(placeholder);
   display: block;
