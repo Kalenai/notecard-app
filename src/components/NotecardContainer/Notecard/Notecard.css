@@ -1,10 +1,9 @@
 .Notecard {
-  background-color: #fff;
   position: relative;
   width: 90%;
   max-height: 30vh;
   margin: 1.0rem;
-  border: 1px solid #eee;
+  border: 1px solid rgba(180, 180, 180, 0.3);
   box-shadow: 0 2px 5px #ccc;
   display: flex;
   flex-direction: column;

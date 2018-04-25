@@ -24,7 +24,7 @@
 }
 
 .NotecardExpanded [contenteditable='true']:empty:before {
-  color: #999;
+  color: rgba(180, 180, 180, 0.5);
   content: attr(placeholder);
   display: block;
 }

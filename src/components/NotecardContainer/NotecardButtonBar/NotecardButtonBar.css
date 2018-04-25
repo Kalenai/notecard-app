@@ -1,4 +1,5 @@
 .ButtonBar {
+  position: relative;
   width: 100%;
   padding: 1.0rem;
   display: none
