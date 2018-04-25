@@ -25,8 +25,15 @@ class NotecardContainer extends Component {
     this.setState({ content: value });
   };
 
+  openNotecardHandler = () => {
+    this.setState({ notecardExpanded: true });
+  };
+
+  closeNotecardHandler = () => {
+    this.setState({ notecardExpanded: false });
+  };
+
   toggleColorPickerHandler = () => {
-    console.log('function fired');
     this.setState({ showColorPicker: !this.state.showColorPicker });
   };
 
@@ -43,6 +50,8 @@ class NotecardContainer extends Component {
       state,
       onTitleChange,
       onContentChange,
+      openNotecardHandler,
+      closeNotecardHandler,
       colorChangeHandler,
       toggleColorPickerHandler
     } = this;
@@ -68,8 +77,10 @@ class NotecardContainer extends Component {
         colorOptions={colorOptions}
         onTitleChange={onTitleChange}
         onContentChange={onContentChange}
+        closeNotecardHandler={closeNotecardHandler}
         colorChangeHandler={colorChangeHandler}
         toggleColorPickerHandler={toggleColorPickerHandler}
+        onClick={!notecardExpanded ? openNotecardHandler : null}
       >
         {({
           title,
@@ -80,6 +91,7 @@ class NotecardContainer extends Component {
           colorOptions,
           onTitleChange,
           onContentChange,
+          closeNotecardHandler,
           colorChangeHandler,
           toggleColorPickerHandler
         }) => (
@@ -116,7 +128,7 @@ class NotecardContainer extends Component {
               ) : null}
               <Button>Delete</Button>
               <Button>Pin</Button>
-              <Button>Close</Button>
+              <Button onClick={closeNotecardHandler}>Close</Button>
             </NotecardButtonBar>
           </React.Fragment>
         )}
