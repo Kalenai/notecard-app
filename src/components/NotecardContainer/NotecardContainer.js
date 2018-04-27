@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import onClickOutside from "react-onclickoutside";
 import Notecard from './Notecard/Notecard';
 import NotecardField from './NotecardField/NotecardField';
 import Button from '../UI/Button/Button';
 import NotecardButtonBar from './NotecardButtonBar/NotecardButtonBar';
-import { TwitterPicker } from 'react-color';
+import ColorPicker from './ColorPicker/ColorPicker';
 
 class NotecardContainer extends Component {
   state = {
@@ -14,7 +15,21 @@ class NotecardContainer extends Component {
     notecardPinned: false,
     notecardColor: '#fff',
     showColorPicker: false,
-    colorOptions: ['#fff', '#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#9edbe8', '#adb0ff']
+    colorOptions: [
+      '#fff',
+      '#ffb3ba',
+      '#ffdfba',
+      '#ffffba',
+      '#baffc9',
+      '#9edbe8',
+      '#adb0ff'
+    ]
+  };
+
+  handleClickOutside = () => {
+    if (this.state.notecardExpanded) {
+      this.setState({ notecardExpanded: false });
+    }
   };
 
   onTitleChange = (event, value) => {
@@ -37,12 +52,20 @@ class NotecardContainer extends Component {
     this.setState({ showColorPicker: !this.state.showColorPicker });
   };
 
+  closeColorPickerHandler = () => {
+    this.setState({ showColorPicker: false });
+  };
+
   colorChangeHandler = color => {
     this.setState({ notecardColor: color.hex });
   };
 
-  changePinnedHandler = () => {
-    this.setState({ notecardPinned: !this.state.notecardExpanded });
+  togglePinnedHandler = () => {
+    this.setState({ notecardPinned: !this.state.notecardPinned });
+  };
+
+  deleteNotecardHandler = () => {
+    alert('Notecard deletion not yet implemented');
   };
 
   render() {
@@ -53,9 +76,12 @@ class NotecardContainer extends Component {
       openNotecardHandler,
       closeNotecardHandler,
       colorChangeHandler,
-      toggleColorPickerHandler
+      toggleColorPickerHandler,
+      closeColorPickerHandler,
+      togglePinnedHandler,
+      deleteNotecardHandler
     } = this;
-    
+
     const {
       title,
       content,
@@ -80,6 +106,9 @@ class NotecardContainer extends Component {
         closeNotecardHandler={closeNotecardHandler}
         colorChangeHandler={colorChangeHandler}
         toggleColorPickerHandler={toggleColorPickerHandler}
+        closeColorPickerHandler={closeColorPickerHandler}
+        togglePinnedHandler={togglePinnedHandler}
+        deleteNotecardHandler={deleteNotecardHandler}
         onClick={!notecardExpanded ? openNotecardHandler : null}
       >
         {({
@@ -93,7 +122,10 @@ class NotecardContainer extends Component {
           onContentChange,
           closeNotecardHandler,
           colorChangeHandler,
-          toggleColorPickerHandler
+          toggleColorPickerHandler,
+          closeColorPickerHandler,
+          togglePinnedHandler,
+          deleteNotecardHandler
         }) => (
           <React.Fragment>
             <NotecardField
@@ -113,21 +145,15 @@ class NotecardContainer extends Component {
             <NotecardButtonBar notecardExpanded={notecardExpanded}>
               <Button onClick={toggleColorPickerHandler}>Color</Button>
               {showColorPicker ? (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '95%'
-                  }}
-                >
-                  <TwitterPicker
-                    color={notecardColor}
-                    colors={colorOptions}
-                    onChange={colorChangeHandler}
-                  />
-                </div>
+                <ColorPicker
+                  color={notecardColor}
+                  colors={colorOptions}
+                  onChange={colorChangeHandler}
+                  closeHandler={closeColorPickerHandler}
+                />
               ) : null}
-              <Button>Delete</Button>
-              <Button>Pin</Button>
+              <Button onClick={deleteNotecardHandler}>Delete</Button>
+              <Button onClick={togglePinnedHandler}>Pin</Button>
               <Button onClick={closeNotecardHandler}>Close</Button>
             </NotecardButtonBar>
           </React.Fragment>
@@ -137,4 +163,4 @@ class NotecardContainer extends Component {
   }
 }
 
-export default NotecardContainer;
+export default onClickOutside(NotecardContainer);

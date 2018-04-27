@@ -14,3 +14,10 @@
   width: 90%;
   max-height: 80vh;
 }
+
+.Pinned {
+  color: #ccc;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
